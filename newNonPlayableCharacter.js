@@ -54,11 +54,16 @@ function newNonPlayableCharacter(x, y) {
         stop()
     }
 
+        // I got the tracking to work
+        //  but the static piture wont 
+        //  take priority over the animated
+        //  predecessor
+
     async function stop(time) {
         direction = 'null'
-        element.src = `./assets/red-character/static.gif`
-        await sleep(time)
+        element.src = `./assets/red-character/static.png`
         stop()
+        
     }
 
     return {
@@ -105,7 +110,9 @@ async function moveNPC(){
 //     await npc.walkNorth(400)
 // }
          
-                          
+                    
+
+
                                          
                                          
                                          
