@@ -17,35 +17,48 @@ function newNonPlayableCharacter(x, y) {
         if (direction === 'south') {
             y -= 1
         }
+        if (direction === 'null') {
+            y -= 0
+        }
         element.style.left = x + 'px'
         element.style.bottom = y + 'px'
     }
 
     setInterval(moveCharacter, 1)
 
-    function walkEast() {
+    async function walkEast(time) {
         direction = 'east'
         element.src = `./assets/red-character/east.gif`
+        await sleep(time)
+        stop()
     }
 
-    function walkNorth() {
+    async function walkNorth(time) {
         direction = 'north'
         element.src = `./assets/red-character/north.gif`
+        await sleep(time)
+        stop()
     }
 
-    function walkWest() {
+    async function walkWest(time) {
         direction = 'west'
         element.src = `./assets/red-character/west.gif`
+        await sleep(time)
+        stop()
     }
 
-    function walkSouth() {
+    async function walkSouth(time) {
         direction = 'south'
         element.src = `./assets/red-character/south.gif`
+        await sleep(time)
+        stop()
     }
 
-    function stop() {
-        direction = null
+    async function stop(time) {
+        direction = 'null'
         element.src = `./assets/red-character/static.gif`
+        await sleep(time)
+        stop()
     }
 
     return {
@@ -57,3 +70,48 @@ function newNonPlayableCharacter(x, y) {
         stop: stop
     }
 }
+
+function sleep(time){
+    return new Promise(resolve => {
+        setTimeout(resolve, time)
+    })  
+}
+
+async function moveNPC(){
+    await npc.walkNorth(1400)
+    await npc.stop(250)
+    await npc.walkEast(1200)
+    await npc.stop(250)
+    await npc.walkSouth(300)
+    await npc.stop(250)
+    await npc.walkEast(1500)
+    await npc.stop(250)
+    await npc.walkSouth(1500)
+    await npc.stop(250)
+    await npc.walkWest(2700)
+    await npc.stop(250)
+    await npc.walkNorth(400)
+    await npc.stop(250)
+}
+
+
+// async function moveNPC(){
+//     await npc.walkNorth(1400)
+//     await npc.walkEast(1200)
+//     await npc.walkSouth(300)
+//     await npc.walkEast(1500)
+//     await npc.walkSouth(1500)
+//     await npc.walkWest(2700)
+//     await npc.walkNorth(400)
+// }
+         
+                          
+                                         
+                                         
+                                         
+                                         
+                                         
+            
+             
+
+
